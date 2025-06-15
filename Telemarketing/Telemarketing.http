@@ -1,0 +1,6 @@
+@Telemarketing_HostAddress = http://localhost:5048
+
+GET {{Telemarketing_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
