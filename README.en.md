@@ -52,6 +52,35 @@ The project is organized in the following layers:
    ```
    dotnet ef database update
    ```
+
+### Database Migrations
+The project uses Entity Framework Core to manage database migrations. Migrations are located in the `Infrastructure/Migrations` folder.
+
+To create a new migration after model changes:
+```
+dotnet ef migrations add MigrationName
+```
+
+To remove the last migration:
+```
+dotnet ef migrations remove
+```
+
+To list all migrations:
+```
+dotnet ef migrations list
+```
+
+To update the database to the latest migration:
+```
+dotnet ef database update
+```
+
+To revert to a specific migration:
+```
+dotnet ef database update MigrationName
+```
+
 4. Run the project:
    ```
    dotnet run
