@@ -52,6 +52,35 @@ O projeto está organizado nas seguintes camadas:
    ```
    dotnet ef database update
    ```
+
+### Migrações do Banco de Dados
+O projeto utiliza Entity Framework Core para gerenciar as migrações do banco de dados. As migrações estão localizadas na pasta `Infrastructure/Migrations`.
+
+Para criar uma nova migração após alterações no modelo:
+```
+dotnet ef migrations add NomeDaMigracao
+```
+
+Para remover a última migração:
+```
+dotnet ef migrations remove
+```
+
+Para listar todas as migrações:
+```
+dotnet ef migrations list
+```
+
+Para atualizar o banco de dados para a última migração:
+```
+dotnet ef database update
+```
+
+Para reverter para uma migração específica:
+```
+dotnet ef database update NomeDaMigracao
+```
+
 4. Execute o projeto:
    ```
    dotnet run
