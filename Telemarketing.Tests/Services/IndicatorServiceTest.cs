@@ -1,21 +1,21 @@
 using Moq;
 using Telemarketing.Data.Enums;
 using Telemarketing.DTOs;
-using Telemarketing.Repositories;
+using Telemarketing.Services;
 
 namespace Telemarketing.Tests.Services
 {
     public class IndicatorServiceTest
     {
-        private readonly Mock<IIndicatorRepository> _indicateRepositorieMock;
+        private readonly Mock<IIndicatorService> _indicateServiceMock;
 
         public IndicatorServiceTest()
         {
-            _indicateRepositorieMock = new Mock<IIndicatorRepository>();
+            _indicateServiceMock = new Mock<IIndicatorService>();
         }
 
         [Fact]
-        public void GetCollect_ValidReturn_ResultTrue()
+        public async Task GetCollect_ValidReturn_ResultTrue()
         {
             // Arrange
             IndicatorDTO indicator = new IndicatorDTO
@@ -30,10 +30,11 @@ namespace Telemarketing.Tests.Services
                 new CollectDTO { Id = 2, Value = 20.00 }
             };
 
-            _indicateRepositorieMock.Setup(repo => repo.GetCalcByIndicatorId(indicator.Id))
+            _indicateServiceMock.Setup(repo => repo.GetCalcByIndicatorId(indicator.Id))
                 .ReturnsAsync(indicator);
             
             // Act
+            IndicatorDTO result = await _indicateServiceMock.Object.GetCalcByIndicatorId(indicator.Id);
             indicator.Calculate();
 
             // Assert
